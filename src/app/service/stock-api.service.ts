@@ -1,7 +1,7 @@
 import { ComapnyDetail } from '../stock-data-interface/company-detail';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Observable, tap, catchError, throwError} from "rxjs";
+import { Observable, catchError, throwError} from "rxjs";
 import { HttpClient, HttpErrorResponse} from "@angular/common/http";
 import { Quote } from '../stock-data-interface/quote';
 import { formatDate } from '@angular/common';
