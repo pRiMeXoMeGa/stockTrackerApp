@@ -23,6 +23,7 @@ export class TrackerFieldComponent implements OnInit {
   errorMsg: string= '';
   quote!: Quote;
   companyDetail!:ComapnyDetail;
+  loading:boolean = false;
 
   get stockSymbol(): string{
     return this._stockSymbol;
@@ -58,6 +59,7 @@ export class TrackerFieldComponent implements OnInit {
     return  this.apiService.getComapnyName(this.stockSymbol).subscribe({
                 next: companyDetail => {
                   this.companyDetail = companyDetail;
+                  this.loading = false;
                   this.addToList();
                   this.addToLocalStorage();
                 },
@@ -75,9 +77,11 @@ export class TrackerFieldComponent implements OnInit {
       }
     }
     this.stocksList = JSON.parse(localStorage.getItem('stocks')||'');
+    this.loading = false;
   }
 
   getStockQuote(symbol:string): Subscription{
+    this.loading =true;
     return this.apiService.getQuote(symbol).subscribe({
         next: quo => {
             this.quote = quo;
@@ -91,6 +95,7 @@ export class TrackerFieldComponent implements OnInit {
             }
             else{
                 alert("please enter valid stock symbol");
+                this.loading = false;
             }
         },
         error: err => this.errorMsg = err,
@@ -99,7 +104,10 @@ export class TrackerFieldComponent implements OnInit {
   }
 
   submitSymbol():void{
-    this.sub1 = this.getStockQuote(this.stockSymbol);
+    if(this.stockSymbol=="")
+      alert("input cannot be empty");
+    else
+      this.sub1 = this.getStockQuote(this.stockSymbol);
   }
 
   onCloseTab(symbol:string):void{

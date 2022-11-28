@@ -17,6 +17,8 @@ export class SentimentComponent implements OnInit {
   errorMsg: string='';
   companyName: string='';
   sub!:Subscription;
+  loading:boolean= true;
+
   constructor(private router:Router, 
               private activedRoute: ActivatedRoute,
               private apiService: StockApiService) { }
@@ -26,6 +28,7 @@ export class SentimentComponent implements OnInit {
     this.sub = this.apiService.getSentiment(this.symbol).subscribe({
         next: senti => {
             this.sentiment = senti;
+            this.loading = false;
         },
         error: err => this.errorMsg = err,
       }

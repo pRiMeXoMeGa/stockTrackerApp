@@ -18,13 +18,19 @@
             />
         </div>
         
-        <div class="col-md-5">
+        <div class="col-md-2">
           <button (click)="submitSymbol()"
               id="trackBtn"
               class="btn btn-primary">
                   Track
                   <i class="fa fa-chevron-right"></i>
           </button>
+        </div>
+        
+        <div *ngIf="loading" class="col-md-3">
+          <div class="spinner-grow" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
       </div>
     </div>
