@@ -1,0 +1,8 @@
+<div *ngIf="arrow; else down">
+    <img src="../../../assets/up.png" 
+            class="green-arrow-size mt-2"/>
+</div>
+<ng-template #down>
+    <img src="../../../assets/down.png" 
+            class="red-arrow-size mt-2"/>
+</ng-template>

@@ -1,0 +1,45 @@
+<div class="card">
+    <div class="card-header">
+        <strong class="fs-3">
+            {{companyName}} 
+            <span class="fs-5" *ngIf="sentiment">
+                ({{sentiment.symbol}})
+            </span>
+        </strong>
+
+    </div>
+    <div class="card-body">
+        <div class="row" *ngIf="sentiment">
+            <div class="col-md-4 text-center  p-3 border " *ngFor="let senti of sentiment.data">
+                <div class="row" >
+                    <div class="col-md-6">
+                        <div class="row">
+                            <span>{{senti.month | monthToText}}-{{senti.year}}</span>
+                        </div>
+                        <div class="row">
+                            <span>Change: {{senti.change}}</span>
+                        </div>
+                        <div class="row">
+                            <span>MSPR: {{senti.mspr}}</span>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <app-arrow
+                            [arrow]='senti.change>0?true:false'
+                        ></app-arrow>
+                    </div>
+                </div>                
+            </div>
+            
+        </div>
+    </div>
+    <div class="card-footer">
+        <button (click)="onBack()"
+            id="backBtn"
+            class="btn btn-outline-secondary"
+            [style.width.px]="btnStyle">
+            <i class="fa fa-chevron-left"></i> Back
+        </button>
+    </div>
+</div>

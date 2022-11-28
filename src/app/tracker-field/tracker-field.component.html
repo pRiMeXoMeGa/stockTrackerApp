@@ -1,0 +1,46 @@
+<div class="bg-light">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-md-4">
+          <div class="row">
+            <span>{{description}}</span>  
+          </div>
+          <div class="row">
+            <span class="example-font-size">{{example}}</span>
+          </div>
+        </div>
+  
+        <div class="col-md-3">
+          <input type="text"
+            id="stockInput" 
+            [(ngModel)] = 'stockSymbol'
+            />
+        </div>
+        
+        <div class="col-md-5">
+          <button (click)="submitSymbol()"
+              id="trackBtn"
+              class="btn btn-primary">
+                  Track
+                  <i class="fa fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+  
+<div class="container-fluid">
+  <div *ngIf="stocksList.length" class="row">
+    <div class="col-md-4 mt-2" *ngFor="let stockList of stocksList">
+      <app-stock-card [c]='stockList.priceDetail.c' [d]='stockList.priceDetail.d'
+        [h]='stockList.priceDetail.h' [o]='stockList.priceDetail.o'
+        [companyName]='stockList.companyName' [symbol]='stockList.symbol'
+        (closeBtn)='onCloseTab($event)'>
+      </app-stock-card>
+      
+    </div>
+    
+  </div>
+</div>
