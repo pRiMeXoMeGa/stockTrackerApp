@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -16,8 +15,7 @@ export class StockCardComponent implements OnInit {
   @Input() symbol:string='';
   @Output() closeBtn : EventEmitter<string> =new EventEmitter<string>();
   
-
-  constructor(private router:Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

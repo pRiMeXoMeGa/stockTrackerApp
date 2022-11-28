@@ -21,7 +21,6 @@ export class StockApiService {
   getQuote(symbol:string): Observable<Quote>{
     return this.httpClient.get<Quote>(this.apiURL+ 
       'quote?symbol=' + symbol + '&token='+ this.apiToken).pipe(
-      // tap(data=>console.log('All-1')),
       catchError(this.handleError)
     );
   }
@@ -29,7 +28,6 @@ export class StockApiService {
   getComapnyName(symbol:string): Observable<ComapnyDetail>{
     return this.httpClient.get<ComapnyDetail>(this.apiURL+ 
       'search?q=' + symbol + '&token='+ this.apiToken).pipe(
-      // tap(data=>console.log('All-2')),
       catchError(this.handleError)
     );
   }
@@ -38,7 +36,6 @@ export class StockApiService {
     return this.httpClient.get<Sentiment>(this.apiURL +
       'stock/insider-sentiment?symbol=' + symbol +'&from=' + this.from + 
       '&to=' + this.to + '&token='+ this.apiToken).pipe(
-      // tap(data=>console.log('All-3')),
       catchError(this.handleError)
     );
   }

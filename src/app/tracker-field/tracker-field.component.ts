@@ -39,7 +39,6 @@ export class TrackerFieldComponent implements OnInit {
       for(let s of this.stockSymbols){
         this.sub1 = this.getStockQuote(s);
       }
-      // this.stocksList = JSON.parse(localStorage.getItem('stocks')||'');
     }
   }
 
@@ -82,7 +81,7 @@ export class TrackerFieldComponent implements OnInit {
     return this.apiService.getQuote(symbol).subscribe({
         next: quo => {
             this.quote = quo;
-            if(this.quote.c!=0 && this.quote.d!=0){
+            if(this.quote.o!=0 && this.quote.c!=0){
                 if(!this.stockSymbols.includes(symbol)){
                   this.sub2 = this.getCompanyDetails();
                 }

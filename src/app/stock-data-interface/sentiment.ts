@@ -9,12 +9,4 @@ export interface Sentiment{
         },
     ],
     symbol: string,
-
-    // symbol: string,
-    // year: number,
-    // month: number,
-    // change: number,
-    // mspr: number
-    // data:{},
-    // symbol:string,
 }

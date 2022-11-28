@@ -26,7 +26,6 @@ export class SentimentComponent implements OnInit {
     this.sub = this.apiService.getSentiment(this.symbol).subscribe({
         next: senti => {
             this.sentiment = senti;
-            // console.log(this.sentiment);
         },
         error: err => this.errorMsg = err,
       }

@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TrackerFieldComponent } from './tracker-field/tracker-field.component';
 import { SentimentComponent } from './sentiment/sentiment.component';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,7 @@ const routes: Routes = [
   { path: '',   component:TrackerFieldComponent},
 
   { path: 'sentiment/:id',  component:SentimentComponent},
-  //{ path: '**', component:TrackerComponent }  
+  { path: '**', component:PageNotFoundComponent }  
 ];
 
 @NgModule({
